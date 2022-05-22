@@ -1,4 +1,5 @@
 import os
+from email import message
 from typing import Dict
 
 
@@ -6,6 +7,15 @@ class CalculatorView:
     def get_number(self) -> str:
         self.__clear()
         return input("Digite um número: ")
+
+    def other_number(self) -> str:
+        self.__clear()
+        message = ''''
+                Sim - 1
+                Não - Pressione qualquer teclas
+            '''
+        print(message)
+        return input("\tDigite sua opção: ")
     
     def calculator_success(self, response: Dict) -> None:
         self.__clear()

@@ -1,10 +1,20 @@
 import math
+from typing import List
 
 from src.model.calculator_model import calculator_model
 
 
 class __CalculatorController:
     def calculator_average(self, number: any) -> any:
+        try:
+            number_validator = self.__validator_number(number)
+            response = self.__calculator_average(number_validator)
+
+            return {"success": True, "calculator": "average", "result": response, "input": number_validator}
+        except Exception as exception:
+            return {"success": False, "error": str(exception)}
+            
+    def calculator_std(self, number: List) -> any:
         try:
             number_validator = self.__validator_number(number)
             response = self.__calculator_average(number_validator)
@@ -33,8 +43,6 @@ class __CalculatorController:
     def __validator_number(self, number: any) -> any:
         if float(number):
             return float(number)
-        if int(number):
-            return int(number)
         else:
             raise Exception(f"\tO valor digitado não é um número real.")
 
