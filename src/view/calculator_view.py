@@ -1,19 +1,20 @@
 import os
+from typing import Dict
 
 
 class CalculatorView:
     def get_number(self) -> str:
         self.__clear()
         return input("Digite um número: ")
+    
+    def calculator_success(self, response: Dict) -> None:
+        self.__clear()
 
-    def calculator_success(self) -> None:
-        # self.__clear()
-
-        message = f'\tCalculo foi concluido com sucesso.'
+        message = f'\t{response}'
         print(message)
 
     def calculator_fail(self) -> None:
-        # self.__clear()
+        self.__clear()
 
         message = f'\tOcorreu um erro ao calcular.'
         print(message)

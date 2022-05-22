@@ -8,5 +8,5 @@ def calculator_process() -> any:
 
     response = calculator_controller.calculator_average(real_number)
     print(response)
-    if response["success"]: calculator_view.calculator_success()
+    if response["success"]: calculator_view.calculator_success(response)
     else: calculator_view.calculator_fail()

@@ -9,7 +9,7 @@ class __CalculatorController:
             number_validator = self.__validator_number(number)
             response = self.__calculator_average(number_validator)
 
-            return {"success": True, "response": "format_response"}
+            return {"success": True, "calculator": "average", "result": response, "input": number_validator}
         except Exception as exception:
             return {"success": False, "error": str(exception)}
 
