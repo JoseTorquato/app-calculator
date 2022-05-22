@@ -12,6 +12,10 @@ def test_calculator_controler_average_dict():
     assert calculator_controller.calculator_average("-1") == {'success': True, 'calculator': 'average', 'result': (0.45354416707124456+0.0024063546467115752j), 'input': -1.0}
     assert calculator_controller.calculator_average("12") == {'success': True, 'calculator': 'average', 'result': 3.1704416572803424, 'input': 12.0}
 
+def test_exception_calculator_controler_average_dict():
+    assert calculator_controller.calculator_average("a") == {"success": False, "error": "could not convert string to float: 'a'"}
+    assert calculator_controller.calculator_average(".") == {"success": False, "error": "could not convert string to float: '.'"}
+    assert calculator_controller.calculator_average("-") == {"success": False, "error": "could not convert string to float: '-'"}
 
 def test_calculator_controler_std_result():
     assert calculator_controller.calculator_std(["1", "2", "3"])["result"] == 0.1364596875359298
