@@ -1,8 +1,6 @@
 import math
-import re
 from typing import Dict, List
 
-from numpy import number
 from src.model.calculator_model import calculator_model
 
 
