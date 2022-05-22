@@ -12,5 +12,8 @@ class __CalculatorModel:
 
     def calculator_std(self, numbers: List) -> any:
         return 1/self.__np.std(numbers)
+
+    def calculator_var(self, numbers: List) -> any:
+        return self.__np.var(numbers)
         
 calculator_model = __CalculatorModel()

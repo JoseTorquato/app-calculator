@@ -9,5 +9,7 @@ def initializer() -> None:
             CalculatorProcess.calculator_process_average()
         elif command == "2":
             CalculatorProcess.calculator_process_std()
+        elif command == "3":
+            CalculatorProcess.calculator_process_var()
         else:
             break

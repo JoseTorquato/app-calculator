@@ -2,7 +2,9 @@ def get_command_view() -> str:
     message = '''
         Sistema de calculadoras
 
-        * Calculadora - 1
+        * Calculadora Averege - 1
+        * Calculadora STD - 2
+        * Calculadora Var - 3
         * Sair - 0
 
     '''
