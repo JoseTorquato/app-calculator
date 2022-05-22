@@ -7,10 +7,10 @@ class __CalculatorModel:
     def __init__(self) -> None:
         self.__np = np
 
-    def calculator_average(self, number: List) -> Tuple:
+    def calculator_average(self, number: List) -> any:
         return self.__np.average(number)
 
-    def calculator_std(self):
-        return self.__np.std()
+    def calculator_std(self, numbers: List) -> any:
+        return 1/self.__np.std(numbers)
         
 calculator_model = __CalculatorModel()

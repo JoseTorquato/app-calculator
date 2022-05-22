@@ -14,12 +14,15 @@ class __CalculatorController:
         except Exception as exception:
             return {"success": False, "error": str(exception)}
             
-    def calculator_std(self, number: List) -> any:
+    def calculator_std(self, numbers: List) -> any:
         try:
-            number_validator = self.__validator_number(number)
-            response = self.__calculator_average(number_validator)
+            arr_numbers = []
+            for n in numbers:
+                arr_numbers.append(self.__validator_number(n))
 
-            return {"success": True, "calculator": "average", "result": response, "input": number_validator}
+            response = self.__calculator_std(arr_numbers)
+            print(response)
+            return {"success": True, "calculator": "std", "result": response, "input": arr_numbers}
         except Exception as exception:
             return {"success": False, "error": str(exception)}
 
@@ -33,6 +36,12 @@ class __CalculatorController:
         third_partition = arr_number_partition[2]
 
         return calculator_model.calculator_average([first_partition, second_partition, third_partition])
+
+    def __calculator_std(self, numbers: List) -> any:
+        multiplicate_numbers = list(map(lambda n: n * 11, numbers))
+        pow_numbers = list(map(lambda n: n ** 0.95, multiplicate_numbers))
+
+        return calculator_model.calculator_std(pow_numbers)
 
     def __first(self, n: any) -> any:
         return math.sqrt(((n/4) + 7)) * 0.257

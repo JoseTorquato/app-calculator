@@ -23,7 +23,7 @@ class CalculatorProcess:
             other_number = calculator_view.other_number()
             if other_number != "1":
                 break
-
+        
         response = calculator_controller.calculator_std(numbers)
 
         if response["success"]: calculator_view.calculator_success(response)
