@@ -1,4 +1,6 @@
-from src.controller.calculator_controller import calculator_controller
+from src.controller.calculator_controller import (
+    calculator_average_controller, calculator_std_controller,
+    calculator_var_controller)
 from src.view.calculator_view import calculator_view
 
 
@@ -6,17 +8,17 @@ class CalculatorProcess:
     @staticmethod
     def calculator_process_average() -> any:
         real_number = calculator_view.get_number()
-        CalculatorProcess.__calculator_response(calculator_controller.calculator_average(real_number))
+        CalculatorProcess.__calculator_response(calculator_average_controller.calculator_average(real_number))
 
     @staticmethod
     def calculator_process_std() -> any:
         numbers = CalculatorProcess.__input_numbers()
-        CalculatorProcess.__calculator_response(calculator_controller.calculator_std(numbers))
+        CalculatorProcess.__calculator_response(calculator_std_controller.calculator_std(numbers))
 
     @staticmethod
     def calculator_process_var() -> any:
         numbers = CalculatorProcess.__input_numbers()
-        CalculatorProcess.__calculator_response(calculator_controller.calculator_var(numbers))
+        CalculatorProcess.__calculator_response(calculator_var_controller.calculator_var(numbers))
 
     @staticmethod
     def __input_numbers():

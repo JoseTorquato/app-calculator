@@ -22,4 +22,4 @@ lint:
 	@prospector
 
 test:
-	@pytest -v
+	@pytest -vv
