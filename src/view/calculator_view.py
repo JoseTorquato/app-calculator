@@ -18,8 +18,9 @@ class __CalculatorView:
         return input("\tDigite sua opção: ")
     
     def calculator_success(self, response: Dict) -> None:
+        print(response)
+        return response
         self.__clear()
-
         message = f'\t{response}'
         print(message)
 

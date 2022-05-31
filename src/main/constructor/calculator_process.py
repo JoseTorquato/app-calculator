@@ -6,9 +6,8 @@ from src.view.calculator_view import calculator_view
 
 class CalculatorProcess:
     @staticmethod
-    def calculator_process_average() -> any:
-        real_number = calculator_view.get_number()
-        CalculatorProcess.__calculator_response(calculator_average_controller.calculator_average(real_number))
+    def calculator_process_average(real_number) -> any:
+        return CalculatorProcess.__calculator_response(calculator_average_controller.calculator_average(real_number))
 
     @staticmethod
     def calculator_process_std() -> any:
@@ -33,5 +32,5 @@ class CalculatorProcess:
 
     @staticmethod
     def __calculator_response(response):
-        if response["success"]: calculator_view.calculator_success(response)
-        else: calculator_view.calculator_fail()
+        if response["success"]: return calculator_view.calculator_success(response)
+        else: return calculator_view.calculator_fail()

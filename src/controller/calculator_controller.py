@@ -7,6 +7,7 @@ from src.utils.validator_number import validator_number
 
 class __CalculatorAveregeController:
     def calculator_average(self, number: any) -> Dict:
+        print(number)
         try:
             number_validator = validator_number(number)
 
