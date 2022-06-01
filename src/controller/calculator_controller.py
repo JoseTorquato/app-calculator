@@ -2,12 +2,12 @@ import math
 from typing import Dict, List
 
 from src.driver.calculator_model import calculator_model
+from src.interfaces.calculator_interface import ICalculator
 from src.utils.validator_number import validator_number
 
 
-class __CalculatorAveregeController:
-    def calculator_average(self, number: any) -> Dict:
-        print(number)
+class __CalculatorAveregeController(ICalculator):
+    def calculate(self, number: any) -> Dict:
         try:
             number_validator = validator_number(number)
 
@@ -33,8 +33,8 @@ class __CalculatorAveregeController:
 
 calculator_average_controller = __CalculatorAveregeController()
 
-class __CalculatorStdController:
-    def calculator_std(self, numbers: List) -> Dict:
+class __CalculatorStdController(ICalculator):
+    def calculate(self, numbers: List) -> Dict:
         try:
             arr_numbers = [validator_number(n) for n in numbers]
 
@@ -52,21 +52,22 @@ class __CalculatorStdController:
 
 calculator_std_controller = __CalculatorStdController()
 
-class __CalculatorVarController:
-    def calculator_var(self, numbers: List) -> Dict:
+class __CalculatorVarController(ICalculator):
+    def calculate(self, numbers: List) -> Dict:
         try:
             arr_numbers = [validator_number(n) for n in numbers]
-
-            response, result = self.__build_var(arr_numbers)
+            result = self.__build_var(arr_numbers)
             
-            return {"success": response, "calculator": "var", "result": result, "input": arr_numbers}
+            return {"success": True, "calculator": "var", "result": result, "input": arr_numbers}
         except Exception as exception:
             return {"success": False, "error": str(exception)}
 
     def __build_var(self, numbers: List) -> any:
-        calculator_std = calculator_std_controller.calculator_std(numbers)["result"]
+        calculator_std = calculator_std_controller.calculate(numbers)["result"]
         calculator_var = calculator_model.calculator_var(numbers)
-
-        return calculator_var > calculator_std, calculator_var
+        if calculator_var > calculator_std:
+            return calculator_var
+        else:
+            raise Exception(f"O valor médio {calculator_var}, nao é maior que o desvio padrao {calculator_std}")
 
 calculator_var_controller = __CalculatorVarController()

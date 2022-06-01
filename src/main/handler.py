@@ -1,15 +1,13 @@
-from src.main.constructor.calculator_process import CalculatorProcess
-from src.main.constructor.command_process import command_process
+from typing import Type
+
+from flask import request as FlaskRequest
+from src.driver.adapter import HTTPRequest
+from src.interfaces.calculator_interface import ICalculator
 
 
-def initializer() -> None:
-    while True:
-        command = command_process()
-        if command == "1":
-            CalculatorProcess.calculator_process_average()
-        elif command == "2":
-            CalculatorProcess.calculator_process_std()
-        elif command == "3":
-            CalculatorProcess.calculator_process_var()
-        else:
-            break
+def request_adapter(request: FlaskRequest, process: Type[ICalculator]):
+    http_request = HTTPRequest(
+        body=request.json,
+    )
+    response = process.calculate(http_request.body["input"])
+    return response
